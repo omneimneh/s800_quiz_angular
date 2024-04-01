@@ -1,0 +1,11 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"/>
+<div *ngIf="user" class="flex flex-col items-center gap-2">
+  <div class="bg-amber-100 w-full flex flex-row justify-center relative h-48 mb-24">
+    <img [src]="user.avatar" alt="user avatar" class="rounded-full overflow-clip w-48 absolute bottom-0 translate-y-1/2 border-4 border-white"/>
+  </div>
+  <div class="container mx-auto flex flex-col items-center">
+    <span class="opacity-80">ID: #{{user.id}}</span>
+    <h1>{{user.first_name}} {{user.last_name}}</h1>
+    <a href="mailto:{{user.email}}">{{user.email}}</a>
+  </div>
+</div>

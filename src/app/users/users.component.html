@@ -1,0 +1,20 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"/>
+<div class="container mx-auto py-5 flex flex-col gap-2">
+  <form>
+    <mat-form-field class="w-full">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Ex. Omar" (input)="searchTermChanged($event)">
+    </mat-form-field>
+  </form>
+  <div *ngIf="data" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
+    <app-user-card *ngFor="let user of data.data" [user]="user"></app-user-card>
+  </div>
+  <mat-paginator
+    *ngIf="data"
+    [length]="data.total"
+    [pageSize]="data.per_page"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="pageChange($event)"
+    aria-label="Select page">
+  </mat-paginator>
+</div>
